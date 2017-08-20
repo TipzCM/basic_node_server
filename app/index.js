@@ -1,17 +1,38 @@
-const http = require("http");
-const port = 8000;
+const http = require("http")
+const express = require('express')
+const path = require('path')
+const port = 8000
 
-var requestHandler = (request, response) => {
-    console.log(request.url);
-    response.end("Hello world");
-}
+var app = express()
 
-var server = http.createServer(requestHandler);
+var public = "D:/Dialogs/html/build/dist"
 
-server.listen(port, (err) => {
+app.use('/', express.static(public))
+
+app.get('/', (request,response) => {
+    response.sendFile(path.join(public + "/index.html"))
+})
+
+
+app.listen(port, (err) => {
     if (err) {
-        return console.log("got an error", err);
+        return console.log('some error', err)
     }
 
-    console.log("server is listening on " + port);
+    console.log('server is listening on port ' + port)
 })
+
+// var requestHandler = (request, response) => {
+//     console.log(request.url);
+//     response.end("Hello world");
+// }
+
+// var server = http.createServer(requestHandler);
+
+// server.listen(port, (err) => {
+//     if (err) {
+//         return console.log("got an error", err);
+//     }
+
+//     console.log("server is listening on " + port);
+// })

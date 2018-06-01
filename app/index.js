@@ -4,7 +4,7 @@ const port = 1234;
 
 var args = process.argv.slice(2);
 
-var public = args[0] || '.';
+var public = args[0] || './app/demo';
 
 var app = express();
 

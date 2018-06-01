@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <meta name="viewport" content="minimal-ui,user-scalable=yes,initial-scale=1.0,width=device-width" />
+		
+		<style type="text/css">
+
+		</style>
+		<script>
+			//globals
+			function addHandler(el, type, handler) {
+				if (el.addEventListener) {
+					el.addEventListener(type, handler, true);
+				}
+				else if (el.attachEvent) {
+					el.attachEvent('on' + type, function(e) {
+						e.target = e.srcElement;
+						handler(e);
+					});
+				}
+			}
+			
+			//onload
+			window.onload = function() {
+				var test = document.getElementById('test');
+				test.innerHTML = "Hello World";
+			}
+		</script>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+</html>
